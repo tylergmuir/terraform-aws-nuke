@@ -1,0 +1,60 @@
+filters:
+  CloudFormationStack:
+    - property: Name
+      type: glob
+      value: StackSet-AWSControlTowerGuardrailAWS-GR-*
+    - property: Name
+      type: glob
+      value: StackSet-AWSControlTowerBP-BASELINE-*
+  CloudTrailTrail:
+    - property: Name
+      value: aws-controltower-BaselineCloudTrail
+  CloudWatchEventsRule:
+    - value: "Rule: aws-controltower-ConfigComplianceChangeEventRule"
+  CloudWatchEventsTarget:
+    - "Rule: aws-controltower-ConfigComplianceChangeEventRule Target ID: Compliance-Change-Topic"
+  CloudWatchLogsLogGroup:
+    - property: logGroupName
+      value: /aws/lambda/aws-controltower-NotificationForwarder
+  ConfigServiceConfigRule:
+    - type: glob
+      value: AWSControlTower_AWS-GR_*
+    - type: glob
+      value: securityhub-*
+  ConfigServiceConfigurationRecorder:
+    - value: aws-controltower-BaselineConfigRecorder
+  ConfigServiceDeliveryChannel:
+    - value: aws-controltower-BaselineConfigDeliveryChannel
+  GuardDutyDetector:
+    - property: DetectorID
+      type: glob
+      value: "*"
+  IAMRole:
+    - property: Name
+      type: glob
+      value: aws-controltower-*
+    - property: Name
+      value: AWSControlTowerExecution
+  IAMRolePolicy:
+    - property: role:RoleName
+      value: aws-controltower-ForwardSnsNotificationRole
+  IAMRolePolicyAttachment:
+    - property: RoleName
+      type: glob
+      value: aws-controltower-*
+    - property: RoleName
+      value: AWSControlTowerExecution
+  LambdaFunction:
+    - property: Name
+      value: aws-controltower-NotificationForwarder
+  SecurityHub:
+    - property: Arn
+      type: glob
+      value: "*:hub/default"
+  SNSSubscription:
+    - type: glob
+      value: "*:aws-controltower-SecurityNotifications:*"
+  SNSTopic:
+    - property: TopicARN
+      type: glob
+      value: "*:aws-controltower-SecurityNotifications"

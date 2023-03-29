@@ -1,0 +1,5 @@
+.terraform
+*.zip
+dependencies/aws-nuke/aws-nuke
+dependencies/pyyaml/python
+terraform.tfstate*

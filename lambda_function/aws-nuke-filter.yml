@@ -1,0 +1,26 @@
+filters:
+  CloudWatchEventsRule:
+    - value: "Rule: aws-nuke-once-a-day"
+  CloudWatchEventsTarget:
+    - value: "Rule: aws-nuke-once-a-day Target ID: aws_nuke"
+  CloudWatchLogsLogGroup:
+    - property: logGroupName
+      value: /aws/lambda/aws-nuke
+  IAMPolicy:
+    - property: ARN
+      type: glob 
+      value: arn:aws:iam::*:policy/service-role/aws_nuke_lambda_logging
+  IAMRole:
+    - property: Name
+      value: aws_nuke_lambda_role
+  IAMRolePolicyAttachment:
+    - property: RoleName
+      value: aws_nuke_lambda_role
+  LambdaFunction:
+    - property: Name
+      value: aws-nuke
+  LambdaLayer:
+    - property: Name
+      value: aws_nuke_layer
+    - property: Name
+      value: pyyaml_layer

@@ -1,0 +1,22 @@
+filters:
+  IAMSAMLProvider:
+    - type: glob
+      value: "*/AWSSSO_*_DO_NOT_DELETE"
+  IAMRole:
+    - property: Name
+      type: glob
+      value: AWSReservedSSO_*
+    - property: Name
+      type: glob
+      value: stacksets-exec-*
+    - property: Name
+      value: AWS-Support-Role
+  IAMRolePolicyAttachment:
+    - property: RoleName
+      type: glob
+      value: AWSReservedSSO_*
+    - property: RoleName
+      type: glob
+      value: stacksets-exec-*
+    - property: RoleName
+      value: AWS-Support-Role
