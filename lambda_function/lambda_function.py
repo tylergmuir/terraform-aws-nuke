@@ -101,11 +101,11 @@ def parse_nuke_output(output, filter_action = None):
 def lambda_handler(event, context):
     aws_account_id = context.invoked_function_arn.split(":")[4]
     fix_expirationdate_tags(regionlist)
-    write_aws_nuke_config(aws_account_id, regionlist, ["control-tower", "aws-nuke", "sso"])
+    write_aws_nuke_config(aws_account_id, regionlist, ["control-tower", "aws-nuke", "sso", "discovery"])
     aws_nuke_dryrun = subprocess.check_output(["/opt/aws-nuke","--config","/tmp/aws-nuke-config.yml","--force","--force-sleep","0"])
     print(aws_nuke_dryrun.decode())
     nuke_output_parsed = parse_nuke_output(aws_nuke_dryrun.decode(), "would remove")
     write_tag_filter(list(nuke_output_parsed.keys()))
-    write_aws_nuke_config(aws_account_id, regionlist, ["control-tower", "aws-nuke", "sso", "tagging"])
+    write_aws_nuke_config(aws_account_id, regionlist, ["control-tower", "aws-nuke", "sso", "discovery", "tagging"])
     subprocess.run(["/opt/aws-nuke","--config","/tmp/aws-nuke-config.yml","--force","--force-sleep","3","--no-dry-run"])
     return 0

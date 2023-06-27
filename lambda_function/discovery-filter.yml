@@ -1,0 +1,4 @@
+filters:
+  IAMRole:
+    - property: Name
+      value: OrganizationAccountAccessRole
