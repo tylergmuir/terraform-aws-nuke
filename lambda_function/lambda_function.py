@@ -42,6 +42,7 @@ def write_aws_nuke_config(account, regions, filter_list):
         "control-tower": "control-tower-filter.yml",
         "aws-nuke": "aws-nuke-filter.yml",
         "sso": "sso-filter.yml",
+        "discovery": "discovery-filter.yml",
         "tagging": "/tmp/tagging-filter.yml"
     }
 
